@@ -27,7 +27,7 @@ ipo=$(ifconfig | head -2 | awk '/inet/{print $2}')
 ipos=${ipo%\.*}.254
 echo "baseurl=http://$ipos/rhel7" >> /etc/yum.repos.d/new.repo
 echo "enables=1" >> /etc/yum.repos.d/new.repo
-echo "pgpcheck=0" >> /etc/yum.repos.d/new.repo
+echo "gpgcheck=0" >> /etc/yum.repos.d/new.repo
 yum=$(yum repolist | awk '/repolist/{print $2}' | sed 's/\,//')
 if [ $yum -eq 0 ];then
 	echo "yum源配置失败"
